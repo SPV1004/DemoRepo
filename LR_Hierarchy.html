@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Land Rover Model Hierarchy</title>
+    <style>
+        :root {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            --primary-color: #004d40;
+            --secondary-color: #00796b;
+            --background-color: #f9f9f9;
+            --text-color: #333;
+            --muted-color: #666;
+        }
+
+        body {
+            margin: 24px;
+            background: var(--background-color);
+            color: var(--text-color);
+        }
+
+        h1 {
+            margin-bottom: 16px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .controls {
+            margin-bottom: 16px;
+        }
+
+        .controls button {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--secondary-color);
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .controls button:hover {
+            background: var(--secondary-color);
+        }
+
+        .tree {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tree ul {
+            list-style: none;
+            margin: 8px 0 8px 24px;
+            padding-left: 0;
+            display: block;
+        }
+
+        .caret {
+            cursor: pointer;
+            user-select: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .caret::before {
+            content: "▸";
+            display: inline-block;
+            width: 1em;
+            transform-origin: 50% 50%;
+            transition: transform 0.2s ease;
+        }
+
+        .caret.caret-down::before {
+            transform: rotate(90deg);
+            content: "▾";
+        }
+
+        .leaf {
+            margin-left: 1.2em;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .leaf img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .muted {
+            color: var(--muted-color);
+            font-size: 0.95rem;
+        }
+
+        .note {
+            margin-top: 16px;
+            color: var(--muted-color);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Land Rover Model Hierarchy</h1>
+
+    <div class="controls">
+        <button id="expandAll">Expand all</button>
+        <button id="collapseAll">Collapse all</button>
+    </div>
+
+    <ul class="tree" id="lrTree">
+        <li>
+            <span class="caret">Land Rover</span>
+            <ul>
+                <li>
+                    <span class="caret">Range Rover (family)</span>
+                    <ul>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Range Rover">
+                            Range Rover (full-size) — standard, long wheelbase, SV
+                        </li>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Range Rover Sport">
+                            Range Rover Sport — standard, SVR
+                        </li>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Range Rover Velar">
+                            Range Rover Velar
+                        </li>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Range Rover Evoque">
+                            Range Rover Evoque
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <span class="caret">Discovery (family)</span>
+                    <ul>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Discovery">
+                            Discovery — mainstream family SUV (L series, etc.)
+                        </li>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Discovery Sport">
+                            Discovery Sport — compact 5/7-seat SUV
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <span class="caret">Defender (family)</span>
+                    <ul>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Defender 90">
+                            Defender 90 — 2‑door (short wheelbase)
+                        </li>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Defender 110">
+                            Defender 110 — 4‑door (standard)
+                        </li>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Defender 130">
+                            Defender 130 — extended wheelbase
+                        </li>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Classic Defender">
+                            Classic / historical variants (pre-2016)
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <span class="caret">Legacy / Other Models</span>
+                    <ul>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Freelander">
+                            Freelander — compact SUV (older model)
+                        </li>
+                        <li class="leaf">
+                            <img src="https://via.placeholder.com/40" alt="Series Models">
+                            Series / Classic models (early Land Rover history)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="note">Click a caret to expand/collapse. This file is a starting hierarchy — edit nodes to add generations, trims or years.</div>
+
+    <script>
+        // Simple tree toggle
+        (function(){
+            const tree = document.getElementById('lrTree');
+
+            // Convert every li that has a nested UL to a caret node
+            tree.querySelectorAll('li').forEach(li => {
+                const childUl = li.querySelector(':scope > ul');
+                const textNode = li.querySelector(':scope > span.caret');
+                if (childUl && !textNode) {
+                    // wrap first text node into a caret span
+                    const first = li.childNodes[0];
+                    const wrapper = document.createElement('span');
+                    wrapper.className = 'caret';
+                    // move text and possible inline nodes into wrapper
+                    while (li.firstChild && li.firstChild !== childUl) {
+                        wrapper.appendChild(li.firstChild);
+                    }
+                    li.insertBefore(wrapper, childUl);
+                }
+            });
+
+            // Initialize caret click handlers
+            tree.querySelectorAll('.caret').forEach(c => {
+                const parent = c.parentElement;
+                const nested = parent.querySelector(':scope > ul');
+                if (nested) {
+                    // start collapsed
+                    nested.style.display = 'none';
+                    c.classList.remove('caret-down');
+                    c.addEventListener('click', () => {
+                        const isVisible = nested.style.display !== 'none';
+                        nested.style.display = isVisible ? 'none' : 'block';
+                        c.classList.toggle('caret-down', !isVisible);
+                    });
+                }
+            });
+
+            document.getElementById('expandAll').addEventListener('click', () => {
+                tree.querySelectorAll('ul').forEach(u => u.style.display = 'block');
+                tree.querySelectorAll('.caret').forEach(c => c.classList.add('caret-down'));
+            });
+            document.getElementById('collapseAll').addEventListener('click', () => {
+                // keep root shown, collapse nested lists
+                tree.querySelectorAll(':scope > li > ul').forEach(u => u.style.display = 'none');
+                tree.querySelectorAll('.caret').forEach(c => c.classList.remove('caret-down'));
+            });
+        })();
+    </script>
+</body>
+</html>
