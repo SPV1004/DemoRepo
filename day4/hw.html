@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  
+</head>
+<body>
+  
+    <h1>Contact Us</h1><br>
+    <form >
+      <label for="name">Full Name</label><br>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required maxlength="80" /><br>
+
+      <label for="email">Email Address</label><br>
+      <input type="email" id="email" name="email" placeholder="example@mail.com" required maxlength="100" /><br>
+
+      <label for="phone">Phone Number</label><br>
+      <input type="tel" id="phone" name="phone" placeholder="Enter 10 digit phone no:" pattern="[0-9]{10}"maxlength="12" /><br>
+
+      <label for="subject">Subject</label><br>
+      <input type="text" id="subject" name="subject" placeholder="What is your inquiry about?" required maxlength="100" /><br>
+      <label for="message">Message</label><br>
+      <textarea id="message" name="message" placeholder="Type your message here..." required maxlength="1000"></textarea><br>
+
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  
+</body>
+</html>
