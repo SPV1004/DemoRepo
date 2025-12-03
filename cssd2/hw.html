@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Menu</title>
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdfdfd;
+    }
+
+    /* Restaurant name */
+    h3.restaurant-name {
+      text-align: center;/* Center align insted of right because, its messin up the asthetics */
+      font-family: "Georgia", serif;
+      font-size: 28px;
+      color: #b22222;
+      margin-top: 30px;
+      margin-right: 40px;
+    }
+
+    /* Welcome message */
+    .welcome-message {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      word-spacing: 10px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    /* Menu table */
+    table.menu-table {
+      width: 60%;
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+
+    table.menu-table th,
+    table.menu-table td {
+      border: 1px solid #333;
+      padding: 12px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    table.menu-table th {
+      background-color: #f2f2f2;
+    }
+
+    /* Links styling */
+    a {
+      text-decoration: none;
+      color: #b22222;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: #333333;
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Restaurant name with icons -->
+  <h3 class="restaurant-name">
+    <i class="fa-solid fa-utensils"></i>
+    Spice Garden Bistro
+    <i class="fa-solid fa-mug-hot"></i>
+  </h3>
+
+  <!-- Welcome message -->
+  <p class="welcome-message">
+    Welcome to our delicious dining experience
+  </p>
+
+  <!-- Menu heading above table -->
+  <div class="menu-header">
+    <strong>Today’s Menu</strong>
+  </div>
+
+  <!-- Menu table -->
+  <table class="menu-table">
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>Grilled Chicken Platter</td>
+      <td>$12.99</td>
+    </tr>
+    <tr>
+      <td>Veggie Delight Pasta</td>
+      <td>$9.49</td>
+    </tr>
+    <tr>
+      <td>Chocolate Lava Cake</td>
+      <td>$5.99</td>
+    </tr>
+  </table>
+
+  <!-- Example link -->
+  <p style="text-align:center; margin-top:20px;">
+    <a href="#">View full menu online</a>
+  </p>
+
+</body>
+</html>
