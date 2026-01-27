@@ -15,7 +15,6 @@ Delete the book that has book_id = 3.
 
 
 
-
 -- Insert books
 INSERT INTO books (book_id, title, author, price, stock)
 VALUES
