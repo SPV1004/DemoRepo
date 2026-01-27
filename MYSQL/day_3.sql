@@ -37,3 +37,7 @@ WHERE price > 500;
 DELETE FROM books
 WHERE book_id = 3;
 
+
+
+
+
